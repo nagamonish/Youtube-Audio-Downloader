@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Video Downloader</title>
+    <style>
+        body {
+            background: url("https://images.pexels.com/photos/7130546/pexels-photo-7130546.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") no-repeat center fixed;
+        }
+        #videoUrl, button {
+            padding: 0.6em 0.7em;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        #videoUrl {
+            width: 250px;
+            border-style: none;
+            margin-right: 0.5rem;
+        }
+
+        input::placeholder {
+            font-size: 13px;
+        }
+
+        div {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        h1 {
+            font-size: 18px;
+            position: absolute;
+            top: 43%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter youtube video link</h1>
+    <div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul style="list-style: none; padding: 0;">
+                    {% for message in messages %}
+                        <li style="list-style: none;">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form action="/download" method="post">
+            <input type="text" name="videoUrl" id="videoUrl" placeholder="Youtube Link">
+            <button type="submit">Download</button>
+        </form>
+    </div>
+
+</body>
+</html>
